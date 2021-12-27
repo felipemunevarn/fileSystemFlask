@@ -1,0 +1,45 @@
+<!doctype html>
+<title>Subida de archivos</title>
+<style>
+    body,
+    .center {
+        margin: auto;
+        width: 50%;
+        border: 3px solid green;
+        padding: 10px;
+    }
+</style>
+
+<body>
+
+    {% block content %}
+    <h1 class="title">
+        Sistema de subida archivos en Flask
+    </h1>
+    {% endblock %}
+
+    <p>
+        {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+    </p>
+
+    <form method="post" action="/upload" enctype="multipart/form-data">
+
+        <div class="box__input">
+            <dl>
+                <p>
+                    <input type="file" name="files[]" value="Selecciona los archivos" multiple="true" autocomplete="off" required>
+                </p>
+            </dl>
+            <p>
+                <input type="submit" value="Subir">
+            </p>
+        </div>
+
+
+    </form>
